@@ -1,0 +1,13 @@
+{% extends 'women/base2.html' %}
+
+{% block content %}
+    <h2>Результаты поиска</h2>
+    <p>Вы искали: {{ query }}</p>
+
+    {% for result in results %}
+        <h3><a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a></h3>
+        <p>{{ result.object.content }}</p>
+    {% empty %}
+        <p>Нет результатов для вашего запроса.</p>
+    {% endfor %}
+{% endblock %}

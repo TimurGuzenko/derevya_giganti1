@@ -1,0 +1,34 @@
+{% extends 'women/base2.html' %}
+{% load static %}
+
+{% block content %}
+<h1 style="font-size: 43px; color: #ebd723;text-align: center;-webkit-text-stroke: 1.5px black">{{ post.title }}</h1>
+<h3 style="font-size: 33px; color: #70eb23;text-align: center;-webkit-text-stroke: 1px black">Вид взрослого растения</h3>
+  {% if post.photo %}
+    <p>
+      <img class="img-article-left" src="{{ post.photo.url }}" style="width: 100%; height: auto;">
+    </p>
+  {% endif %}
+  <h3 style="font-size: 33px; color: #70eb23;text-align: center;-webkit-text-stroke: 1px black">Саженец</h3>
+  {% if post.photo2 %}
+    <p>
+      <img class="img-article-left" src="{{ post.photo2.url }}" style="width: 100%; height: auto;">
+    </p>
+  {% endif %}
+  <h1 style="font-size: 50px; color:#ebd723;text-align: right;-webkit-text-stroke: 1.5px black" >Цена:  {{ post.price }}  сом </h1>
+  <div class="contrast-text" >
+    <div style="display: flex; justify-content: center;">
+    <button data-product="{{post.id}}"   data-action="add" class="btn btn-outline-secondary add-btn update-cart btn-warning btn-lg btn-block btn-half-width">Добавить в корзину</button>
+    
+    </div>
+    <div style="margin: 10px;"></div>
+    <div style="display: flex; justify-content: center;">
+    <a href="{% url 'cart' %}" class="btn btn-outline-secondary add-btn update-cart btn-warning btn-lg btn-block btn-half-width" style="color: black; text-decoration: none">ПЕРЕЙТИ В КОРЗИНУ</a>
+    </div>
+    <div style="margin: 69px;"></div>
+
+
+
+    {{ post.content|linebreaks }}
+  </div>
+{% endblock %}

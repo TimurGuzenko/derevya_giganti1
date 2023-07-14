@@ -1,0 +1,139 @@
+{% extends 'women/base2.html' %}
+{% load static %}
+
+{% block content %}
+
+<section id="main">
+    <div class="inner">
+
+    <!-- One -->
+        <!-- Подключение CSS-стилей Swiper -->
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<!-- Подключение JS-скриптов Swiper -->
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <section id="one" class="wrapper style1">
+
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="{% static 'women/images/pic11.jpg' %}" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="{% static 'women/images/northern-california-redwood-heaven-trees-fog.jpg' %}" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="{% static 'women/images/nature-trees-forest-mist.jpg' %}" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="{% static 'women/images/forest-old-trees-worm-view-sequoia-national-park.jpg' %}" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="{% static 'women/images/spanish-moss-epiphyte-southern-live-oak-tree-garden-.jpg' %}" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="{% static 'women/images/road-beside-forest-.jpg' %}" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="{% static 'women/images/larch-conifer-cone-branch-tree.jpg' %}" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="{% static 'women/images/live-oak-ancient-angel-oak-south-carolina-.jpg' %}" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="{% static 'women/images/fall-leaf-tree-season.jpg' %}" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="{% static 'women/images/korea-fir-abies-koreana-tannenzweig-pine-cones.jpg' %}" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="{% static 'women/images/africa-trees-baobabs-nature-wallpaper.jpg' %}" alt="" />
+                  </div>
+                  <!-- Добавьте другие слайды по аналогии -->
+                </div>
+              </div>
+              
+            <header class="special">
+                <h2>Если вам что то понравится из того что мы выращиваем</h2>
+                <p>То по ссылкам внизу сайта вы можете с нами связаться</p>
+            </header>
+            
+            <div class="content">
+                
+                
+                <div style="text-align: center;">
+                    <span style="font-size: 57px; color: #ee9653; font-weight: bolder; font-style: italic; font-family: 'Times New Roman', Times, serif; -webkit-text-stroke: 0.4px black">Деревья рекордсмены</span>
+                  </div>
+                  
+            </div>
+        </section>
+
+    <!-- Two -->
+    <section id="three" class="wrapper">
+        <div class="spotlight">
+            <div class="image flush"><img src="{% static 'women/images/tree-sequoia-wood-bark.jpg' %}" alt="" /></div>
+            
+            <div class="inner">
+                <h2> Генерал Шерман </h2>
+                <p style="text-transform: uppercase;">Является крупнейшим деревом вида Секвоядендрон Гигантский по колличеству древесины в кубических метрах - свыше 1500. Возраст оценивается в 2300-2700 лет.</p>
+
+            </div>
+        </div>
+        <div class="spotlight alt" style="background-color: rgb(32, 27, 27);">
+            <div class="image flush"><img src="{% static 'women/images/гиперион.jpg' %}" alt="" /></div>
+            <div  class="inner">
+                <h2 style="color: white">Гиперион</h2>
+                <p style="text-transform: uppercase; color: rgb(239, 202, 202);">Высочайшее дерево вида Секвойя Вечнозеленая. На данный момент высота превышает 115 метров. Возраст оценивается в 700-800 лет. </p>
+            </div>
+        </div>
+        <div class="spotlight">
+            <div class="image flush"><img src="{% static 'women/images/major.jpg' %}" alt="" /></div>
+
+            <div class="inner">
+                <h2>Major Oak</h2>
+                <p style="text-transform: uppercase;">Major Oak действительно стал легендой, он относится к виду Дуба Черешчатого. Его корни уходят глубоко в Шервудский лес площадью 450 акров в Ноттингемшире, известном как излюбленное место преступника мира Робин Гуда.
+                    Его возраст оценивается в 1000 лет.</p>
+            </div>
+        </div>
+        <div class="spotlight alt" style="background-color: rgb(32, 27, 27);">
+            <div class="image flush"><img src="{% static 'women/images/el-grande-2003.jpg' %}" alt="" /></div>
+            <div class="inner">
+                <h2 style="color: white;">Центурион</h2>
+                <p style="text-transform: uppercase; color: rgb(239, 202, 202);">Центурион растет в заповеднике Тасмании Tahune Forest Reserve возле туристической достопримечательности «воздушная тропа» (Tahune Airwalk). Он относится к виду Эвкалипт Царственный. Высота более 101 метра. Возраст 350-400 лет.</p>
+            </div>
+        </div>
+        
+    </section>
+
+</div>
+</section>
+
+<!-- Three -->
+<section id="three" class="wrapper">
+    {% for post in posts %}
+    <div class="spotlight">
+        <a href="{{ post.get_absolute_url }}">
+            <div class="image flush">
+                <img src="{{ post.imageURL }}" alt="" />
+            </div>
+        </a>
+        <div class="inner">
+            <a href="{{ post.get_absolute_url }}"></a>
+            <h3 style="font-size: 40px; color: rgb(218, 247, 158); -webkit-text-stroke: 1.5px black">{{ post.title }}</h3>
+            <p style="font-size: 21px; color: rgb(218, 247, 158);">{{ post.content | truncatewords:100 }}</p>
+            <p class="link-read-post">
+                <a href="{{ post.get_absolute_url }}" style="font-size: 29px; color: #d5fe08;-webkit-text-stroke: 0.25px black; text-decoration: none">Читать описание → </a>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+<script>
+var swiper = new Swiper('.swiper-container', {
+    loop: true, // Зациклить слайды
+    autoplay: {
+      delay: 3500, // Интервал между слайдами (в миллисекундах)
+    },
+  });
+  </script>
+{% endblock %}

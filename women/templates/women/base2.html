@@ -1,0 +1,207 @@
+{% load static %}
+{% load women_tags %}
+<!DOCTYPE HTML>
+<!--
+	Caminar by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+    
+    <link rel="shortcut icon" href="{% static 'women/images/logo.png' %}" type="image/x-icon"/> 
+	<head>
+     
+   
+        
+		<title>Гиганты нашей Земли</title>
+        
+        <title>Всходы и Саженцы деревьев</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+        <link rel="stylesheet" type="text/css" href="{% static 'women/css/main1.css' %}">
+        
+        <script type="text/javascript">
+            var user = '{{request.user}}'
+          
+            function getToken(name){
+              var cookieValue = null;
+              if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                  var cookie = cookies[i].trim();
+          
+                  if (cookie.substring(0, name.length +1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                  }
+                }
+              }
+              return cookieValue;
+            }
+            var csrftoken = getToken('csrftoken') 
+          
+          </script>    
+    </head>
+    <body>
+        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent" style="position: fixed; top: 0; left: 0; right: 0; z-index: 100;">
+            <ul class="navbar-nav flex-fill">
+                {% if cat_selected == 0 %}
+                <li class="nav-item selected">
+                    <a class="nav-link" href="#" style="font-size: 23px; font-family: 'Lucida Sans Unicode';-webkit-text-stroke: 0.25px black; text-decoration: none">Все категории</a>
+
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" style="font-size: 23px;color:#ebd723;-webkit-text-stroke: 0.25px black; text-decoration: none">Все категории</a>
+                </li>
+                {% endif %}
+                {% for c in cats %}
+                {% if c.women__count > 0 %}
+                {% if c.pk == cat_selected %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ c.get_absolute_url }}" style="font-size: 23px;color:#ebd723; -webkit-text-stroke: 0.25px black; text-decoration: none">{{ c.name }}</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ c.get_absolute_url }}" style="font-size: 23px;color:#ebd723; -webkit-text-stroke: 0.25px black; text-decoration: none">{{ c.name }}</a>
+                </li>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </ul>
+
+            <div class="link-container">
+                {% if request.user.is_authenticated %}
+                  <div>
+                    <span style="font-size: 23px;color:#73eb23; -webkit-text-stroke: 0.25px black; text-decoration: none">{{ user.username }}</span>
+                    <a href="{% url 'logout' %}" style="font-size: 23px;color:#ebd723; -webkit-text-stroke: 0.25px black; text-decoration: none">Выйти</a>
+                  </div>
+                {% else %}
+                  <div>
+                    <a href="{% url 'register' %}" style="font-size: 23px; color: #ebd723; -webkit-text-stroke: 0.25px black; text-decoration: none;">Регистрация</a>
+
+                    <span style="font-size: 23px;color:#ebd723; -webkit-text-stroke: 0.25px black">|</span>
+                    <a href="{% url 'login' %}" style="font-size: 23px;color:#ebd723; -webkit-text-stroke: 0.25px black">Войти</a>
+                  </div>
+                {% endif %}
+              
+                <div class="form-inline my-2 my-lg-0">
+                  <a href="{% url 'register' %}" class="btn btn-outline-warning" style="font-size: 20px;-webkit-text-stroke: 0.25px black; text-decoration: none">Регистрация</a>
+                  <a href="{% url 'cart' %}">
+                    <img id="cart-icon" src="{% static 'women/images/cart2.png' %}">
+                  </a>
+                  <p id="cart-total" style="font-size: 20px;font-size: 23px;color:#73eb23; -webkit-text-stroke: 0.25px black">{{cartItems}}</p>
+                </div>
+              </div>
+              
+        </nav>
+        
+          
+    
+        <div class="container">
+            <br>  
+        
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link rel="stylesheet" href="{% static 'women/css/main.css' %}">
+            <link rel="shortcut icon" href="{% static 'women/images/logo.png' %}" type="image/x-icon"/>
+        
+        </div>
+        
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo">
+                    <a href="{% url 'home' %}" style="font-family: 'Capture it', sans-serif; -webkit-text-stroke: 1.4px rgb(202, 209, 68);">
+                        Гиганты нашей Земли 
+                        <span style="font-size: 30px; color: #13ce1a; -webkit-text-stroke: 0.4px black;">
+                          Посади свой Лес
+                        </span>
+                      </a>
+                      
+                  </div>
+                  
+			</header>
+            <html>
+<head>
+
+            
+            {% block content %}
+            
+            {% endblock content %}
+        	
+            {% if page_obj.has_other_pages %}
+            <nav class="list-pages">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" style="background-color: #94f24c; color: rgb(23, 196, 219);">&lt;</a>
+
+                    </li>
+                    {% endif %}
+                    
+                    {% for p in paginator.page_range %}
+                        {% if page_obj.number == p %}
+                        <li class="page-item active">
+                            <a class="page-link" href="?page={{ p }}" style="background-color:transparent;border-color: #94f24c;">{{ p }}</a>
+                        </li>
+                        {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ p }}" style="background-color: #94f24c; color: rgb(23, 196, 219); border-color: #94f24c;">{{ p }}</a>
+
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}" style="background-color: #94f24c;color:rgb(23, 196, 219) ">&gt;</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+            
+        </div>
+        
+        <!-- Футер и скрипты здесь -->
+    </body>
+    </html>
+    <footer id="footer">
+        <div class="container">
+            <ul class="icons">
+                <!-- <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li> -->
+                <li><a href="https://www.facebook.com/timurguzenko1/"><img id="links-icon" src="{% static 'women/images/facebo.png' %}" style="transform: scale(1.35);"></a></li>
+                <li><a href="https://www.instagram.com/timurguzenko1/"><img id="links-icon" src="{% static 'women/images/insta.png' %}"></a></li>
+                <li style="position: relative; top: -4px;"><a href="https://www.youtube.com/channel/UCwUF_68Yy3BWOvOevOQBSCA"><img id="links-icon" src="{% static 'women/images/you1.png' %}" ></a></li>
+                <li style="position: relative; top: 8px;"><a href="https://www.tiktok.com/"><img id="links-icon" src="{% static 'women/images/tikt.png' %}"></a></li>
+            </ul>
+        </div>
+    </footer>
+
+<div class="copyright">
+    Сайт создан <a href="{% url 'home' %}">Тимуром Гузенко</a>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="{% static 'women/js/jquery.min.js' %}"></script>
+    <script src="{% static 'women/js/jquery.poptrox.min.js' %}"></script>
+    <script src="{% static 'women/js/skel.min.js' %}"></script>
+    <script src="{% static 'women/js/util.js' %}"></script>
+    <script src="{% static 'women/js/main.js' %}"></script>
+    <script src="{% static 'women/js/cart.js' %}"></script>
+
+</body>
+</html>
